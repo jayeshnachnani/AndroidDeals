@@ -17,9 +17,10 @@
 
 package com.example.android.marsrealestate.overview
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.example.android.marsrealestate.database.DealDatabase
+import com.example.android.marsrealestate.database.DealDatabaseDao
 import com.example.android.marsrealestate.network.MarsApi
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,12 +29,19 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 import com.example.android.marsrealestate.models.Deal
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 /**
  * The [ViewModel] that is attached to the [OverviewFragment].
  */
-class OverviewViewModel : ViewModel() {
+
+class OverviewViewModel (
+        val database: DealDatabaseDao,
+        application: Application) : AndroidViewModel(application) {
+
 
     // The internal MutableLiveData String that stores the status of the most recent request
     private val _response = MutableLiveData<String>()
@@ -42,11 +50,30 @@ class OverviewViewModel : ViewModel() {
     val response: LiveData<String>
         get() = _response
 
+    private val _list = mutableListOf<Deal>()
+    private val _dealTempList = MutableLiveData<List<Deal>>()
+    val dealTempList: LiveData<List<Deal>>
+        get() = _dealTempList
+
+    val dataSource = DealDatabase.getInstance(application).dealDatabaseDao
+
+    /*init {
+        getAsteroidProperties(AsteroidApiFilter.VIEW_SAVED)
+        getImage()
+        addtoList()
+        Timber.i("Image1:" + imgURL.toString())
+        Timber.i("Image2:" + _imgURL.toString())
+
+        //_list.add(asteroid1)
+
+    }*/
+
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
      */
     init {
         getMarsRealEstateProperties()
+        addtoList()
     }
 
     /**
@@ -67,10 +94,35 @@ class OverviewViewModel : ViewModel() {
                 var dealsList: Array<Deal> = gson.fromJson(response.body(), arrayDealType)
                 //dealsList.forEachIndexed  { idx, deal -> println("> Item ${idx}:\n${deal}") }
                 dealsList.forEach {  "BigDeals:" + Timber.i("BigDealsindex" + it.dealName) }
+                dealsList.forEach {
+                    //dataSource.insert(it)
+                    _list.add(it)
+                }
+                viewModelScope.launch {
+                    withContext(Dispatchers.IO) {
+                        insertDealsToDatabase()
+                    }
+
+                }
             }
         })
         //_response.value = "Set the Mars API Response here!"
     }
+
+    private suspend fun insertDealsToDatabase() {
+        //_list.forEach{dataSource.insert(it)}
+        dataSource.insertAll(_list)
+        //_list.clear()
+    }
+    private fun addtoList(){
+        val dealTemp1List = dataSource.getAllDeals()
+        _list.clear()
+        dealTemp1List.observeForever {
+            it.forEach { _list.add(it) }
+            _dealTempList.value = _list
+        }
+    }
+
 
 
 }
