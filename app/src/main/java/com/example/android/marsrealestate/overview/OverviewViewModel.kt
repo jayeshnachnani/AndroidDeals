@@ -76,6 +76,14 @@ class OverviewViewModel (
         addtoList()
     }
 
+    fun onDealClicked(deal: Deal) {
+        //_navigateToAsteroidDetails.value = asteroid
+    }
+
+    fun onDealNavigated() {
+        //_navigateToAsteroidDetails.value = null
+    }
+
     /**
      * Sets the value of the status LiveData to the Mars API status.
      */
