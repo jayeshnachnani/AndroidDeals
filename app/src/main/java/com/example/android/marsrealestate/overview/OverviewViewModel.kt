@@ -55,6 +55,10 @@ class OverviewViewModel (
     val dealTempList: LiveData<List<Deal>>
         get() = _dealTempList
 
+    private val _navigateToDealDetails = MutableLiveData<Deal>()
+    val navigateToDealDetails
+        get() = _navigateToDealDetails
+
     val dataSource = DealDatabase.getInstance(application).dealDatabaseDao
 
     /*init {
@@ -72,16 +76,17 @@ class OverviewViewModel (
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
      */
     init {
+        _list.clear()
         getMarsRealEstateProperties()
         addtoList()
     }
 
     fun onDealClicked(deal: Deal) {
-        //_navigateToAsteroidDetails.value = asteroid
+        _navigateToDealDetails.value = deal
     }
 
     fun onDealNavigated() {
-        //_navigateToAsteroidDetails.value = null
+        _navigateToDealDetails.value = null
     }
 
     /**

@@ -34,6 +34,7 @@ class DealAdapter (val clickListener: DealListener): RecyclerView.Adapter<DealAd
         //asteroidList.add(asteroid1)
         //asteroidList.add(asteroid2)
         //asteroidList.add(asteroid3)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -59,6 +60,7 @@ class DealAdapter (val clickListener: DealListener): RecyclerView.Adapter<DealAd
         fun bind(clickListener: DealListener, item: Deal) {
             //binding.deal = item
             //binding.
+            binding.deal = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }

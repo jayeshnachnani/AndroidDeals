@@ -21,19 +21,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="deal"
+            type="com.example.android.marsrealestate.models.Deal" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp">
 
             <ImageView
                 android:id="@+id/main_photo_image"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="266dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +75,77 @@
                 app:layout_constraintTop_toBottomOf="@+id/property_type_text"
                 tools:text="$100,000" />
 
+            <!--ScrollView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_photo_image">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/deal_name"
+                            android:textColor="@color/default_text_color" />
+
+                        <TextView
+                            android:id="@+id/deal_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{deal.dealName}"
+                            android:textColor="@color/default_text_color"
+                            tools:text="2020-02-01" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deal_interest_rate"
+                                android:textColor="@color/default_text_color" />
+
+                            <TextView
+                                android:id="@+id/interest_rate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/default_text_color"
+                                android:text="@{deal.dealName}"
+                                tools:text="25.126 au" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </ScrollView-->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

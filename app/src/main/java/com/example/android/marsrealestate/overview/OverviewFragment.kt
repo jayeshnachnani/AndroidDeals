@@ -87,6 +87,13 @@ class OverviewFragment : Fragment() {
             }
         })
 
+        DealViewModel.navigateToDealDetails.observe(viewLifecycleOwner, Observer { deal ->
+            deal?.let { this.findNavController().navigate(
+                    OverviewFragmentDirections.actionShowDetail(deal))
+                DealViewModel.onDealNavigated()
+            }
+        })
+
         /*DealViewModel.navigateToAsteroidDetails.observe(viewLifecycleOwner, Observer { asteroid ->
             asteroid?.let { this.findNavController().navigate(
                     MainFragmentDirections.actionShowDetail(asteroid))

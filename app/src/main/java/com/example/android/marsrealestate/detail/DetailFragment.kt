@@ -32,9 +32,13 @@ class DetailFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         @Suppress("UNUSED_VARIABLE")
-        val application = requireNotNull(activity).application
+        //val application = requireNotNull(activity).application
         val binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
+        val deal = DetailFragmentArgs.fromBundle(arguments!!).selectedDeal
+        binding.deal = deal
         return binding.root
+
+
     }
 }

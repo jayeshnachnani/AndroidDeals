@@ -38,6 +38,8 @@
         android:name="com.example.android.marsrealestate.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
+        <argument android:name="selectedDeal"
+            app:argType="com.example.android.marsrealestate.models.Deal" />
     </fragment>
 
 </navigation>
