@@ -26,7 +26,7 @@ import com.bumptech.glide.request.RequestOptions
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+        val imgUri = imgUrl.toUri().buildUpon().scheme("http").build()
         Glide.with(imgView.context)
                 .load(imgUri)
                 .apply(

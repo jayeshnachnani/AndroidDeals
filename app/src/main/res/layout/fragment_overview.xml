@@ -38,7 +38,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
             android:scaleType="fitCenter"
-            app:imageUrl="@{viewModel.obj3.url}"
+            app:imageUrl="@{@string/image_overview}"
             app:srcCompat="@drawable/placeholder_picture_of_day"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
