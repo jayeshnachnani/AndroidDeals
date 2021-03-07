@@ -19,6 +19,7 @@ package com.example.android.marsrealestate.overview
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.android.marsrealestate.DealOfDay
 import com.example.android.marsrealestate.database.DealDatabase
 import com.example.android.marsrealestate.database.DealDatabaseDao
 import com.example.android.marsrealestate.network.MarsApi
@@ -29,6 +30,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 import com.example.android.marsrealestate.models.Deal
+import com.example.android.marsrealestate.network.ImageApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,6 +47,7 @@ class OverviewViewModel (
 
     // The internal MutableLiveData String that stores the status of the most recent request
     private val _response = MutableLiveData<String>()
+    val _imgresponse = MutableLiveData<DealOfDay>()
 
     // The external immutable LiveData for the request status String
     val response: LiveData<String>
@@ -55,9 +58,15 @@ class OverviewViewModel (
     val dealTempList: LiveData<List<Deal>>
         get() = _dealTempList
 
+    var obj3 = DealOfDay("","","")
+
     private val _navigateToDealDetails = MutableLiveData<Deal>()
     val navigateToDealDetails
         get() = _navigateToDealDetails
+
+    private var _imgURL : String = ""
+    val imgURL: String
+        get() =_imgURL
 
     val dataSource = DealDatabase.getInstance(application).dealDatabaseDao
 
@@ -78,6 +87,7 @@ class OverviewViewModel (
     init {
         _list.clear()
         getMarsRealEstateProperties()
+        getImage()
         addtoList()
     }
 
@@ -120,6 +130,31 @@ class OverviewViewModel (
             }
         })
         //_response.value = "Set the Mars API Response here!"
+    }
+
+    private fun getImage() {
+        ImageApi.retrofitService.getProperties().enqueue( object: Callback<DealOfDay> {
+            override fun onFailure(call: Call<DealOfDay>, t: Throwable) {
+                //_imgresponse.value = "Failure: " + t.message
+                Timber.i("Failure:" + t.message)
+            }
+
+            override fun onResponse(call: Call<DealOfDay>, response: Response<DealOfDay>) {
+                //_imgresponse.value = "Success: ${response.body()} Asteroid properties retrieved"
+                var obj2 =response.body()
+                _imgresponse.value = response.body()
+                _imgresponse.observeForever{
+                    obj3 = response.body()!!
+                    Timber.i("obj3:" + obj3?.url.toString())
+                }
+                //obj3 = response.body()!!
+
+                //Timber.i("obj3:" + obj3?.url.toString())
+                Timber.i("Image2:" + imgURL.toString())
+
+            }
+        })
+
     }
 
     private suspend fun insertDealsToDatabase() {
