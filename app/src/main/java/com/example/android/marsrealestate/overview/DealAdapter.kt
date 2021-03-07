@@ -50,7 +50,7 @@ class DealAdapter (val clickListener: DealListener): RecyclerView.Adapter<DealAd
         val item = dealList[position]
         val res = holder.itemView.context.resources
         holder.dealname.text = item.dealName
-        holder.interestRate.text = "Interest Rate:" + item.interestRate.toString()
+        holder.interestRate.text = "Interest Rate:" + item.interestRate.toString() + "%"
         holder.bind(clickListener,item)
     }
     //class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {

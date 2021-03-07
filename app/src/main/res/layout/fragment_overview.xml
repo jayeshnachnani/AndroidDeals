@@ -33,11 +33,11 @@
         tools:context="com.example.android.marsrealestate.MainActivity">
         <ImageView
             android:id="@+id/main_image_of_the_day"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:adjustViewBounds="true"
             android:contentDescription="TODO"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             app:imageUrl="@{@string/image_overview}"
             app:srcCompat="@drawable/placeholder_picture_of_day"
             app:layout_constraintStart_toStartOf="parent"

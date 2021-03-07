@@ -24,7 +24,19 @@ data class Deal (
         @ColumnInfo(name = "deal_Name")
         val dealName: String,
         @ColumnInfo(name = "interest_Rate")
-        val interestRate: Long
+        val interestRate: Long,
+        @ColumnInfo(name = "tenor")
+        val tenor: Long,
+        @ColumnInfo(name = "total_Amount")
+        val totalAmount: Long,
+        @ColumnInfo(name = "total_Tranches")
+        val totalTranches: Long,
+        @ColumnInfo(name = "remaining_Tranches")
+        val remainingTranches: Long,
+        @ColumnInfo(name = "rating")
+        val rating: Long
+
+
 ) : Parcelable
 
 
