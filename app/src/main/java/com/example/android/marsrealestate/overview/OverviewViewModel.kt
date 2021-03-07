@@ -87,7 +87,7 @@ class OverviewViewModel (
     init {
         _list.clear()
         getMarsRealEstateProperties()
-        getImage()
+        //getImage()
         addtoList()
     }
 

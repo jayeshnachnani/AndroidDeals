@@ -27,6 +27,6 @@
     <string name="display_price">$%,.0f</string>
     <string name="deal_name">Deal Name</string>
     <string name="deal_interest_rate">Deal Interest Rate</string>
-    <string name="image_overview">http://192.168.1.2:5000/Saman.jpg</string>
+    <string name="image_overview">http://192.168.1.2:5000/images/Deal.png</string>
 
 </resources>
