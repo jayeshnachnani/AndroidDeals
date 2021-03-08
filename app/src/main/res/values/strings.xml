@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <string name="app_name">Real Estate on Mars</string>
+    <string name="app_name">Fixed Income Deals</string>
     <string name="show_all">Show all</string>
     <string name="show_rent">Rent</string>
     <string name="show_buy">Buy</string>
@@ -26,8 +26,23 @@
     <string name="display_price_monthly_rental">$%,.0f/month</string>
     <string name="display_price">$%,.0f</string>
     <string name="deal_name">Deal Name</string>
-    <string name="deal_interest_rate">Deal Interest Rate</string>
-    <string name="image_overview">http://192.168.1.2:5000/images/Deal.png</string>
-    <string name="deal_term">Deal Term</string>
+    <string name="deal_interest_rate">Interest Rate</string>
+    <string name="image_overview">http://192.168.1.4:5000/images/Deal.png</string>
+    <string name="deal_term">Term (in months)</string>
+    <string name="total_amount">Total Amount (INR)</string>
+    <string name="total_tranches">Total Tranches</string>
+    <string name="remaining_tranches">Remaining Tranches</string>
+    <string name="rating">Rating</string>
+
+    <string name="notification_title">Your deal is booked, here are the details! </string>
+    <string name="notification_description">The Project 3 repository is downloaded</string>
+    <string name="notification_button">See changes</string>
+
+    <string name="loading_notification_channel_id" translatable="false">deals_channel</string>
+    <string name="loading_notification_channel_name" translatable="true">Deals</string>
+    <string name="loading_notification_channel_desc" translatable="true">Channel to notify about closed deals</string>
+    <string name="filename">Filename:</string>
+    <string name="hardcoded_for_now">Hardcoded for now</string>
+    <string name="download_detail">Download Detail</string>
 
 </resources>

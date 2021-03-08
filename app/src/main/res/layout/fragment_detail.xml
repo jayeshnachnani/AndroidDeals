@@ -45,9 +45,9 @@
             <ImageView
                 android:id="@+id/main_photo_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/asteroid_safe"
+                android:src="@drawable/bajaj_fin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -88,7 +88,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/deal_name"
                             android:textColor="#de000000"
-                            android:textSize="20sp"/>
+                            android:textSize="15sp"/>
                             <!--android:text="@string/deal_name"-->
 
 
@@ -99,7 +99,7 @@
                             android:layout_marginTop="4dp"
                             android:text="@{deal.dealName}"
                             android:textColor="#de000000"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -120,7 +120,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/deal_interest_rate"
                                 android:textColor="#de000000"
-                                android:textSize="20sp"
+                                android:textSize="15sp"
                                 />
 
                             <TextView
@@ -129,7 +129,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:textColor="#de000000"
-                                android:textSize="20sp"
+                                android:textSize="15sp"
                                 android:text="@{String.valueOf(deal.interestRate)}"
                                 tools:text="25.126 au" />
                         </LinearLayout>
@@ -147,7 +147,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/deal_term"
                             android:textColor="#de000000"
-                            android:textSize="20sp"/>
+                            android:textSize="15sp"/>
                         <!--android:text="@string/deal_name"-->
 
 
@@ -158,14 +158,121 @@
                             android:layout_marginTop="4dp"
                             android:text="@{String.valueOf(deal.tenor)}"
                             android:textColor="#de000000"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_amount"
+                            android:textColor="#de000000"
+                            android:textSize="15sp"/>
+                        <!--android:text="@string/deal_name"-->
+
+
+                        <TextView
+                            android:id="@+id/total_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{String.valueOf(deal.totalAmount)}"
+                            android:textColor="#de000000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_tranches"
+                            android:textColor="#de000000"
+                            android:textSize="15sp"/>
+                        <!--android:text="@string/deal_name"-->
+
+
+                        <TextView
+                            android:id="@+id/total_tranches"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{String.valueOf(deal.totalTranches)}"
+                            android:textColor="#de000000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/remaining_tranches"
+                            android:textColor="#de000000"
+                            android:textSize="15sp"/>
+                        <!--android:text="@string/deal_name"-->
+
+
+                        <TextView
+                            android:id="@+id/remaining_tranches"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{String.valueOf(deal.remainingTranches)}"
+                            android:textColor="#de000000"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        tools:ignore="ExtraText">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rating"
+                            android:textColor="#de000000"
+                            android:textSize="15sp"/>
+                        <!--android:text="@string/deal_name"-->
+
+
+                        <TextView
+                            android:id="@+id/rating"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{String.valueOf(deal.rating)}"
+                            android:textColor="#DE1CDA1C"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
                     </LinearLayout>
 
 
                 </LinearLayout>
             </ScrollView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLACE ORDER"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <!--/ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout-->
 </layout>
