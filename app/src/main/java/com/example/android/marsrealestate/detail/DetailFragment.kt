@@ -16,16 +16,19 @@
 
 package com.example.android.marsrealestate.detail
 
+import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getSystemService
 //import androidx.core.content.ContextCompat.getSystemService
@@ -36,14 +39,21 @@ import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.FragmentDetailBinding
 import com.example.android.marsrealestate.util.sendNotification
 import kotlinx.android.synthetic.main.fragment_detail.*
+import org.json.JSONObject
+import java.lang.Exception
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import timber.log.Timber
+
 
 /**
  * This [Fragment] will show the detailed information about a selected piece of Mars real estate.
  */
-class DetailFragment : Fragment() {
+class DetailFragment : Fragment(),PaymentResultListener {
 
     private lateinit var orderButton: Button
     private lateinit var notificationManager: NotificationManager
+    val TAG:String = "Payments"
 
     @RequiresApi(Build.VERSION_CODES.M)
 
@@ -63,12 +73,14 @@ class DetailFragment : Fragment() {
                 getString(R.string.loading_notification_channel_id),
                 getString(R.string.loading_notification_channel_name)
         )
+        Checkout.preload(this.context)
         //context?.let { notificationManager.sendNotification("test7", it) }
         //context?.let { it1 -> this.notificationManager?.sendNotification("test5", it1) }
         orderButton = binding.root.findViewById(R.id.button)
         orderButton.setOnClickListener {
             //context?.applicationContext?.let { it1 -> notificationManager?.sendNotification("test", it1) }
             context?.let { it1 -> this.notificationManager?.sendNotification("Deal Name: " + deal.dealName + " Interest Rate: " +  deal.interestRate + " Term: " + deal.tenor, it1) }
+            startPayment()
         }
         return binding.root
 
@@ -100,5 +112,51 @@ class DetailFragment : Fragment() {
 
         }
         // TODO: Step 1.6 END create a channel
+    }
+
+    private fun startPayment() {
+        /*
+        *  You need to pass current activity in order to let Razorpay create CheckoutActivity
+        * */
+        val activity: Activity? = this.activity
+        val co = Checkout()
+
+        try {
+            val options = JSONObject()
+            options.put("name","Razorpay Corp")
+            options.put("description","Demoing Charges")
+            //You can omit the image option to fetch the image from dashboard
+            options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.png")
+            options.put("currency","INR")
+            options.put("amount","100")
+            options.put("send_sms_hash",true);
+
+            val prefill = JSONObject()
+            prefill.put("email","test@razorpay.com")
+            prefill.put("contact","9021066696")
+
+            options.put("prefill",prefill)
+            co.open(activity,options)
+        }catch (e: Exception){
+            Toast.makeText(activity,"Error in payment: "+ e.message, Toast.LENGTH_LONG).show()
+            //e.printStackTrace("try")
+            Timber.i("paymentEx:" + e.message)
+        }
+    }
+
+    override fun onPaymentError(errorCode: Int, response: String?) {
+        try{
+            Toast.makeText(activity,"Payment failed $errorCode \n $response", Toast.LENGTH_LONG).show()
+        }catch (e: Exception){
+            Log.e(TAG,"Exception in onPaymentSuccess", e)
+        }
+    }
+
+    override fun onPaymentSuccess(razorpayPaymentId: String?) {
+        try{
+            Toast.makeText(this.activity,"Payment Successful $razorpayPaymentId", Toast.LENGTH_LONG).show()
+        }catch (e: Exception){
+            Log.e(TAG,"Exception in onPaymentSuccess", e)
+        }
     }
 }
