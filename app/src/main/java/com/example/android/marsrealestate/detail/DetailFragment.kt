@@ -63,12 +63,12 @@ class DetailFragment : Fragment() {
                 getString(R.string.loading_notification_channel_id),
                 getString(R.string.loading_notification_channel_name)
         )
-        context?.let { notificationManager.sendNotification("test7", it) }
-        context?.let { it1 -> this.notificationManager?.sendNotification("test5", it1) }
+        //context?.let { notificationManager.sendNotification("test7", it) }
+        //context?.let { it1 -> this.notificationManager?.sendNotification("test5", it1) }
         orderButton = binding.root.findViewById(R.id.button)
         orderButton.setOnClickListener {
-            context?.applicationContext?.let { it1 -> notificationManager?.sendNotification("test", it1) }
-            context?.let { it1 -> this.notificationManager?.sendNotification("test3", it1) }
+            //context?.applicationContext?.let { it1 -> notificationManager?.sendNotification("test", it1) }
+            context?.let { it1 -> this.notificationManager?.sendNotification("Deal Name: " + deal.dealName + " Interest Rate: " +  deal.interestRate + " Term: " + deal.tenor, it1) }
         }
         return binding.root
 

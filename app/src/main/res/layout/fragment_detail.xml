@@ -28,9 +28,10 @@
             type="com.example.android.marsrealestate.models.Deal" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/detail_scene">
 
     <!--ScrollView
         android:layout_width="match_parent"
@@ -66,6 +67,7 @@
                 tools:text="$100,000" />
 
             <ScrollView
+                android:id="@+id/detail_scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
@@ -74,16 +76,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_photo_image">
 
                 <LinearLayout
+                    android:id="@+id/detail_linear_layout_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/deal_name_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/deal_name"
@@ -103,6 +108,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -110,12 +116,14 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/detail_linear_layout_4"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/interest_rate_label"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="@string/deal_interest_rate"
@@ -138,11 +146,13 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/deal_term_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/deal_term"
@@ -162,11 +172,13 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/total_amount_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/total_amount"
@@ -186,11 +198,13 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/total_tranches_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/total_tranches"
@@ -210,11 +224,13 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/remaining_tranches_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/remaining_tranches"
@@ -234,12 +250,14 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/detail_linear_layout_9"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         tools:ignore="ExtraText">
 
                         <TextView
+                            android:id="@+id/rating_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/rating"
@@ -268,11 +286,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PLACE ORDER"
+            android:background="#1AB321"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
     <!--/ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout-->
 </layout>
