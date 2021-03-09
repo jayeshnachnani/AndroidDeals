@@ -52,16 +52,16 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(applicationContext.getString(R.string.notification_title))
             .setContentText(messageBody)
-            .setContentIntent(contentPendingIntent)
+            //.setContentIntent(contentIntent)
             .setAutoCancel(true)
             .setStyle(bigPicStyle)
             .setLargeIcon(loaderImage)
 
-            .addAction(
+            /*.addAction(
                     R.drawable.ic_launcher_foreground,
                     applicationContext.getString(R.string.download_detail),
                     contentPendingIntent
-            )
+            )*/
 
             .setPriority(NotificationCompat.PRIORITY_HIGH)
     notify(NOTIFICATION_ID, builder.build())

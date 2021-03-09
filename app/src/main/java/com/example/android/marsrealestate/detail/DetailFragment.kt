@@ -27,8 +27,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.getSystemService
+//import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.marsrealestate.MainActivity
 import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.FragmentDetailBinding
 import com.example.android.marsrealestate.util.sendNotification
@@ -40,11 +43,10 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment() {
 
     private lateinit var orderButton: Button
+    private lateinit var notificationManager: NotificationManager
 
     @RequiresApi(Build.VERSION_CODES.M)
-    val notificationManager = context?.getSystemService(
-            NotificationManager::class.java
-    )
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -54,11 +56,14 @@ class DetailFragment : Fragment() {
         binding.lifecycleOwner = this
         val deal = DetailFragmentArgs.fromBundle(arguments!!).selectedDeal
         binding.deal = deal
-
+        notificationManager = context?.getSystemService(
+                NotificationManager::class.java
+        )!!
         createChannel(
                 getString(R.string.loading_notification_channel_id),
                 getString(R.string.loading_notification_channel_name)
         )
+        context?.let { notificationManager.sendNotification("test7", it) }
         context?.let { it1 -> this.notificationManager?.sendNotification("test5", it1) }
         orderButton = binding.root.findViewById(R.id.button)
         orderButton.setOnClickListener {
