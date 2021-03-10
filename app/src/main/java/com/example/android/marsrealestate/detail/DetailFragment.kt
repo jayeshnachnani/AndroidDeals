@@ -28,6 +28,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.getSystemService
@@ -52,6 +53,10 @@ import timber.log.Timber
 class DetailFragment : Fragment(),PaymentResultListener {
 
     private lateinit var orderButton: Button
+    private lateinit var logoImage: ImageView
+    val diceRoll = (0..2).random()
+    //android:src="@drawable/bajaj_fin"
+
     private lateinit var notificationManager: NotificationManager
     val TAG:String = "Payments"
 
@@ -66,6 +71,15 @@ class DetailFragment : Fragment(),PaymentResultListener {
         binding.lifecycleOwner = this
         val deal = DetailFragmentArgs.fromBundle(arguments!!).selectedDeal
         binding.deal = deal
+        logoImage = binding.root.findViewById(R.id.main_photo_image)
+        val drawableResource = when (diceRoll) {
+            1 -> R.drawable.asteroid_safe
+            2 -> R.drawable.bajaj_fin
+            else -> R.drawable.ic_broken_image
+        }
+        logoImage.setImageResource(drawableResource)
+        //logoImage.contentDescription = diceRoll.toString()
+
         notificationManager = context?.getSystemService(
                 NotificationManager::class.java
         )!!
