@@ -30,7 +30,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 import com.example.android.marsrealestate.models.Deal
-import com.example.android.marsrealestate.network.ImageApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -132,31 +131,6 @@ class OverviewViewModel (
         //_response.value = "Set the Mars API Response here!"
     }
 
-    private fun getImage() {
-        ImageApi.retrofitService.getProperties().enqueue( object: Callback<DealOfDay> {
-            override fun onFailure(call: Call<DealOfDay>, t: Throwable) {
-                //_imgresponse.value = "Failure: " + t.message
-                Timber.i("Failure:" + t.message)
-            }
-
-            override fun onResponse(call: Call<DealOfDay>, response: Response<DealOfDay>) {
-                //_imgresponse.value = "Success: ${response.body()} Asteroid properties retrieved"
-                var obj2 =response.body()
-                _imgresponse.value = response.body()
-                _imgresponse.observeForever{
-                    obj3 = response.body()!!
-                    Timber.i("obj3:" + obj3?.url.toString())
-                }
-                //obj3 = response.body()!!
-
-                //Timber.i("obj3:" + obj3?.url.toString())
-                Timber.i("Image2:" + imgURL.toString())
-
-            }
-        })
-
-    }
-
     private suspend fun insertDealsToDatabase() {
         //_list.forEach{dataSource.insert(it)}
         dataSource.insertAll(_list)
@@ -170,7 +144,5 @@ class OverviewViewModel (
             _dealTempList.value = _list
         }
     }
-
-
 
 }
