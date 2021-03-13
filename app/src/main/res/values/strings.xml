@@ -34,7 +34,7 @@
     <string name="remaining_tranches">Remaining Tranches</string>
     <string name="rating">Rating</string>
 
-    <string name="notification_title">Your deal is booked, here are the details! </string>
+    <string name="notification_title">Your deal is reserved, please pay within one hour, here are the details! </string>
     <string name="notification_description">The Project 3 repository is downloaded</string>
     <string name="notification_button">See changes</string>
 

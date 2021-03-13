@@ -37,7 +37,7 @@ private val retrofit = Retrofit.Builder()
 
 // TODO (03) Implement the MarsApiService interface with @GET getProperties returning a String
 
-interface MarsApiService {
+interface DealsApiService {
     @GET("/deals")
     fun getProperties():
             Call<String>
@@ -47,7 +47,7 @@ interface MarsApiService {
 // TODO (04) Create the MarsApi object using Retrofit to implement the MarsApiService
 
 object MarsApi {
-    val retrofitService : MarsApiService by lazy {
-        retrofit.create(MarsApiService::class.java)
+    val retrofitService : DealsApiService by lazy {
+        retrofit.create(DealsApiService::class.java)
     }
 }
