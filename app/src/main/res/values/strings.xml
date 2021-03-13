@@ -27,7 +27,7 @@
     <string name="display_price">$%,.0f</string>
     <string name="deal_name">Deal Name</string>
     <string name="deal_interest_rate">Interest Rate</string>
-    <string name="image_overview">http://192.168.1.5:5000/images/Deal.png</string>
+    <string name="image_overview">http://192.168.1.4:5000/images/Deal.png</string>
     <string name="deal_term">Term (in months)</string>
     <string name="total_amount">Total Amount (INR)</string>
     <string name="total_tranches">Total Tranches</string>

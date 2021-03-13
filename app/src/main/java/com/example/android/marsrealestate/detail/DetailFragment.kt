@@ -48,7 +48,7 @@ import timber.log.Timber
 
 
 /**
- * This [Fragment] will show the detailed information about a selected piece of Mars real estate.
+ * This [Fragment] will show the detailed information about a selected Deal.
  */
 class DetailFragment : Fragment(),PaymentResultListener {
 
@@ -89,7 +89,6 @@ class DetailFragment : Fragment(),PaymentResultListener {
         )
         Checkout.preload(this.context)
         //context?.let { notificationManager.sendNotification("test7", it) }
-        //context?.let { it1 -> this.notificationManager?.sendNotification("test5", it1) }
         orderButton = binding.root.findViewById(R.id.button)
         orderButton.setOnClickListener {
             //context?.applicationContext?.let { it1 -> notificationManager?.sendNotification("test", it1) }
@@ -102,14 +101,12 @@ class DetailFragment : Fragment(),PaymentResultListener {
     }
 
     private fun createChannel(channelId: String, channelName: String) {
-        // TODO: Step 1.6 START create a channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
                     channelId,
                     channelName,
-                    // TODO: Step 2.4 change importance
                     NotificationManager.IMPORTANCE_HIGH
-            )// TODO: Step 2.6 disable badges for this channel
+            )
                     .apply {
                         setShowBadge(false)
                     }
@@ -125,7 +122,6 @@ class DetailFragment : Fragment(),PaymentResultListener {
             notificationManager?.createNotificationChannel(notificationChannel)
 
         }
-        // TODO: Step 1.6 END create a channel
     }
 
     private fun startPayment() {
@@ -162,14 +158,14 @@ class DetailFragment : Fragment(),PaymentResultListener {
         try{
             Toast.makeText(activity,"Payment failed $errorCode \n $response", Toast.LENGTH_LONG).show()
         }catch (e: Exception){
-            Log.e(TAG,"Exception in onPaymentSuccess", e)
+            Log.e(TAG,"Exception in onPaymentFailure", e)
         }
     }
 
     override fun onPaymentSuccess(razorpayPaymentId: String?) {
         try{
             Toast.makeText(this.activity,"Payment Successful $razorpayPaymentId", Toast.LENGTH_LONG).show()
-        }catch (e: Exception){
+            }catch (e: Exception){
             Log.e(TAG,"Exception in onPaymentSuccess", e)
         }
     }
