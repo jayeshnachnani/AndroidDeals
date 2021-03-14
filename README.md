@@ -1,26 +1,17 @@
-# Connect to the Internet - Mars Real Estate
+## Project Brief:
+Develop a fixed income deals application which will enable users of the app to buy the fixed income deals
 
-This is the toy app for Lesson 8 of the [Android App Development in Kotlin course on Udacity](https://classroom.udacity.com/courses/ud9012/).
+## Business Idea:
+Today, interest rates provided by banks and governments across the world have reduced. Thus there is huge demand for higher yielding fixed income products/deals. Think about it, wouldn’t you want a safe asset paying 12-15% interest per year? The app intends to meet this demand by being a marketplace for companies/firms to offer these fixed income deals and customers/users to purchase these
 
-## MarsRealEstate
+## Technical Overview:
+The first version of the app would have 3 screens:
 
-MarsRealEstate is a simple demo app using ViewModel & LiveData with Retrofit, Glide and Moshi in Kotlin.
+### OverView Screen: This screen will display all the deals available to the users. This screen will make use of the RecyclerView inorder to conserve and reuse resources. The data is fetched from a deal API using Retrofit and gson and stored in the local database. Glide is used to fetch the image. Standard MVVM Architecture will be followed
 
-This app demonstrates the following views and techniques:
+### Detail Screen: This screen will display the details of each individual deal. Details will include the Interest rate of the deal, term, total number of tranches, remaining tranches and rating. Details are fetched from the local database.
 
-* [Retrofit](https://square.github.io/retrofit/) to make api calls to an HTTP web service
-* [Moshi](https://github.com/square/moshi) which handles the deserialization of the returned JSON to Kotlin data objects 
-* [Glide](https://bumptech.github.io/glide/) to load and cache images by URL.
-  
-It leverages the following components from the Jetpack library:
+### Payment screen: Integrate with a payment gateway in order to make payment. I have used Razorpay payment gateway for this purpose
 
-* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-* [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
-* [Data Binding](https://developer.android.com/topic/libraries/data-binding/) with binding adapters
-* [Navigation](https://developer.android.com/topic/libraries/architecture/navigation/) with the SafeArgs plugin for parameter passing between fragments
+### Since Kotlin is the flavour of Android, I also decided to write the backend deals API using Kotlin and spring boot. Available at: https://github.com/jayeshnachnani/deals-backend
 
-## Screenshots
-
-![Screenshot 1](screenshots/screen_1.png)
-![Screenshot 2](screenshots/screen_2.png)
-![Screenshot 3](screenshots/screen_3.png)
