@@ -72,9 +72,11 @@ class DetailFragment : Fragment(),PaymentResultListener {
         val deal = DetailFragmentArgs.fromBundle(arguments!!).selectedDeal
         binding.deal = deal
         logoImage = binding.root.findViewById(R.id.main_photo_image)
-        val drawableResource = when (diceRoll) {
-            1 -> R.drawable.asteroid_safe
-            2 -> R.drawable.bajaj_fin
+        val drawableResource = when (deal.dealName) {
+            "SRIRAM TRANSPORT" -> R.drawable.shriram
+            "BAJAJ FIN" -> R.drawable.bajaj_fin
+            "HDFC SEC" -> R.drawable.hdfcsec
+            "SRIRAM TRANSPORT" -> R.drawable.shriram
             else -> R.drawable.ic_broken_image
         }
         logoImage.setImageResource(drawableResource)

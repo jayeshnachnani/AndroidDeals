@@ -20,20 +20,6 @@
         android:onClick="@{() -> clickListener.onClick(deal)}"
         >
 
-        <!--ImageView
-            android:id="@+id/quality_image"
-            android:layout_height="60dp"
-            android:layout_width="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-            <android:layout_width="@dimen/icon_size"-->
-
-        <!--tools:srcCompat="@drawable/ic_sleep_5"-->
-
 
         <TextView
             android:id="@+id/deal_name"
@@ -61,74 +47,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/deal_name"
             app:layout_constraintVertical_bias="0.4" />
-
-        <!--ImageView
-            android:id="@+id/hazardous_or_not"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-
-            app:asteroidStatusImage="@{deal.dealName}"
-            app:layout_constraintEnd_toEndOf="@+id/deal_name"
-            app:layout_constraintHorizontal_bias="0.65"
-            app:layout_constraintTop_toTopOf="@+id/deal_name"
-            app:layout_constraintVertical_bias="0.1"/>
-        <-tools:srcCompat="@drawable/asteroid_safe" /!-->
-
-        <!--TextView
-            android:id="@+id/absolute_magnitude"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/close_approach_date"
-            app:layout_constraintVertical_bias="0.2" />
-
-        <TextView
-            android:id="@+id/estimated_diameter"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/absolute_magnitude"
-            app:layout_constraintVertical_bias="0.25" />
-
-        <TextView
-            android:id="@+id/relative_velocity"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/estimated_diameter"
-            app:layout_constraintVertical_bias="0.5" />
-
-        <TextView
-            android:id="@+id/distance_from_earth"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relative_velocity"
-            app:layout_constraintVertical_bias="0.9" />
-
-        <!TextView
-            android:id="@+id/potentially_hazardous"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:background="@color/text_grey"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/distance_from_earth" /-->
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
