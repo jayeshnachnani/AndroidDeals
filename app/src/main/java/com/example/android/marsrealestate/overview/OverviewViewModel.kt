@@ -69,23 +69,14 @@ class OverviewViewModel (
 
     val dataSource = DealDatabase.getInstance(application).dealDatabaseDao
 
-    /*init {
-        getAsteroidProperties(AsteroidApiFilter.VIEW_SAVED)
-        getImage()
-        addtoList()
-        Timber.i("Image1:" + imgURL.toString())
-        Timber.i("Image2:" + _imgURL.toString())
 
-        //_list.add(asteroid1)
-
-    }*/
 
     /**
-     * Call getMarsRealEstateProperties() on init so we can display status immediately.
+     * Call getDealProperties() on init so we can display status immediately.
      */
     init {
         _list.clear()
-        getMarsRealEstateProperties()
+        getDealProperties()
         //getImage()
         addtoList()
     }
@@ -99,9 +90,9 @@ class OverviewViewModel (
     }
 
     /**
-     * Sets the value of the status LiveData to the Mars API status.
+     * Sets the value of the status LiveData to the Deal status.
      */
-    private fun getMarsRealEstateProperties() {
+    private fun getDealProperties() {
         // TODO (05) Call the MarsApi to enqueue the Retrofit request, implementing the callbacks
         MarsApi.retrofitService.getProperties().enqueue( object: Callback<String> {
             override fun onFailure(call: Call<String>, t: Throwable) {
@@ -128,7 +119,6 @@ class OverviewViewModel (
                 }
             }
         })
-        //_response.value = "Set the Mars API Response here!"
     }
 
     private suspend fun insertDealsToDatabase() {

@@ -8,21 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.ListItemDealBinding
 import com.example.android.marsrealestate.models.Deal
-//import com.udacity.asteroidradar.Asteroid
-//import com.udacity.asteroidradar.R
-//import com.udacity.asteroidradar.databinding.ListItemAsteroidBinding
 
 
 class DealAdapter (val clickListener: DealListener): RecyclerView.Adapter<DealAdapter.ViewHolder>()
 
 {
-    //var data = listOf<Asteroid>()
-    /*val asteroid1 = Asteroid(1L,"rumpelstiltskin","sec",1.6,1.7,
-            1.8,1.9,true)
-    val asteroid2 = Asteroid(1L,"rumpelstiltskin1000","sec",1.6,1.7,
-            1.8,1.9,true)
-    val asteroid3 = Asteroid(1L,"rumpelstiltskinrumpelstiltskin","sec",1.6,1.7,
-            1.8,1.9,true)*/
     var dealList = mutableListOf<Deal>()
 
         set(value) {
@@ -31,9 +21,6 @@ class DealAdapter (val clickListener: DealListener): RecyclerView.Adapter<DealAd
         }
 
     init {
-        //asteroidList.add(asteroid1)
-        //asteroidList.add(asteroid2)
-        //asteroidList.add(asteroid3)
 
     }
 
@@ -58,8 +45,6 @@ class DealAdapter (val clickListener: DealListener): RecyclerView.Adapter<DealAd
         : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(clickListener: DealListener, item: Deal) {
-            //binding.deal = item
-            //binding.
             binding.deal = item
             binding.clickListener = clickListener
             binding.executePendingBindings()

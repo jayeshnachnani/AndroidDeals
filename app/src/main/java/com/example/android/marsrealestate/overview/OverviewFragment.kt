@@ -31,24 +31,11 @@ import com.example.android.marsrealestate.models.Deal
 import timber.log.Timber
 
 /**
- * This fragment shows the the status of the Mars real-estate web services transaction.
+ * This fragment shows the the list of Deals.
  */
 class OverviewFragment : Fragment() {
 
-    /**
-     * Lazily initialize our [OverviewViewModel].
-     */
 
-    /*val application = requireNotNull(this.activity).application
-    val dataSource = DealDatabase.getInstance(application).dealDatabaseDao
-    val viewModelFactory = OverviewViewModelFactory(dataSource, application)
-    val DealViewModel =
-            ViewModelProvider(
-                    this, viewModelFactory).get(OverviewViewModel::class.java)*/
-    //binding.viewModel = overviewViewModel
-    /*private val viewModel: OverviewViewModel by lazy {
-        ViewModelProvider(this).get(OverviewViewModel::class.java)
-    }*/
 
     /**
      * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
@@ -94,12 +81,6 @@ class OverviewFragment : Fragment() {
             }
         })
 
-        /*DealViewModel.navigateToAsteroidDetails.observe(viewLifecycleOwner, Observer { asteroid ->
-            asteroid?.let { this.findNavController().navigate(
-                    MainFragmentDirections.actionShowDetail(asteroid))
-                DealViewModel.onAsteroidNavigated()
-            }
-        })*/
         Timber.plant(Timber.DebugTree())
         return binding.root
     }
